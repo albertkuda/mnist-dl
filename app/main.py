@@ -4,6 +4,12 @@ from app.torch_utils import transform_image, get_prediction
 
 app = Flask(__name__)
 
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
