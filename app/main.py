@@ -17,8 +17,7 @@ def predict():
             img_bytes = file.read()
             tensor = transform_image(img_bytes)
             prediction = get_prediction(tensor)
-            data = {'я думаю, это: ': prediction.item()}
-            return jsonify(data)
+            return 'prediction: ', prediction.item()
         except:
             return jsonify({'error': 'error during prediction'})
         
